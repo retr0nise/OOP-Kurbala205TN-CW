@@ -1,4 +1,4 @@
-﻿namespace OOP_Kurbala205TN_CW
+namespace OOP_Kurbala205TN_CW
 {
     partial class MainForm
     {
@@ -66,7 +66,7 @@
             Page.TabIndex = 2;
             Page.Text = "Сторінка 1";
             Page.TextAlign = ContentAlignment.MiddleCenter;
-            Page.Click += label1_Click;
+            
             // 
             // TextBox
             // 
@@ -76,7 +76,7 @@
             TextBox.Name = "TextBox";
             TextBox.Size = new Size(776, 388);
             TextBox.TabIndex = 3;
-            TextBox.TextChanged += textBox1_TextChanged;
+            
             // 
             // SettingButton
             // 
