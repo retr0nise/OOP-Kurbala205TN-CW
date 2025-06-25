@@ -1,4 +1,4 @@
-﻿namespace OOP_Kurbala205TN_CW
+namespace OOP_Kurbala205TN_CW
 {
     partial class SettingForm
     {
@@ -75,7 +75,7 @@
             LineBox.Name = "LineBox";
             LineBox.Size = new Size(56, 23);
             LineBox.TabIndex = 3;
-            LineBox.Text = mainForm.getLines().ToString();
+            LineBox.Text = mainForm.getParam(2);
             // 
             // ColumnsBox
             // 
@@ -83,7 +83,7 @@
             ColumnsBox.Name = "ColumnsBox";
             ColumnsBox.Size = new Size(56, 23);
             ColumnsBox.TabIndex = 4;
-            ColumnsBox.Text = mainForm.getColumns().ToString();
+            ColumnsBox.Text = mainForm.getParam(3);
 
             // 
             // PathBox
@@ -92,7 +92,7 @@
             PathBox.Name = "PathBox";
             PathBox.Size = new Size(245, 23);
             PathBox.TabIndex = 5;
-            PathBox.Text = mainForm.getPath();
+            PathBox.Text = mainForm.getParam(0);
             // 
             // button1
             // 
@@ -121,7 +121,7 @@
             SavingBox.Name = "SavingBox";
             SavingBox.Size = new Size(245, 23);
             SavingBox.TabIndex = 8;
-            SavingBox.Text = mainForm.getSavePath(); 
+            SavingBox.Text = mainForm.getParam(1); 
             // 
             // SettingForm
             // 
