@@ -8,35 +8,34 @@ using System;
 namespace OOP_Kurbala205TN_CW
 {
 
-    // Клас для головної форми програми, та для роботи з текстовим файлом
+    // РљР»Р°СЃ РґР»СЏ РіРѕР»РѕРІРЅРѕС— С„РѕСЂРјРё РїСЂРѕРіСЂР°РјРё, С‚Р° РґР»СЏ СЂРѕР±РѕС‚Рё Р· С‚РµРєСЃС‚РѕРІРёРј С„Р°Р№Р»РѕРј
     public partial class MainForm : Form
     {
         private
-        string path = "D:\\Study\\ООП\\Курсова\\Текст.txt";
-        string savepath = "D:\\Study\\ООП\\Курсова\\Сортований Текст.txt";
+        string path = "D:\\Study\\РћРћРџ\\РљСѓСЂСЃРѕРІР°\\РўРµРєСЃС‚.txt";
+        string savepath = "D:\\Study\\РћРћРџ\\РљСѓСЂСЃРѕРІР°\\РЎРѕСЂС‚РѕРІР°РЅРёР№ РўРµРєСЃС‚.txt";
         int PageNumber = 0;
         int lines = 10;
         int columns = 3;
         string[] Pages = new string[255];
 
-        [DllImport("kernel32.dll")]
-        static extern bool AllocConsole();
-        public string getPath()
-        {
-            return path;
+        public string getParam(int par)
+        {   switch (par) 
+            {
+                case 0:
+                    return path;
+                case 1:
+                    return savepath;
+                case 2:
+                    return lines.ToString();
+                case 3:
+                    return columns.ToString();
+                default:
+                    return "";
+            }
+            
         }
-        public string getSavePath()
-        {
-            return savepath;
-        }
-        public int getLines()
-        {
-            return lines;
-        }
-        public int getColumns()
-        {
-            return columns;
-        }
+        
         public void setparameters(int lines, int columns, string path, string savepath)
         {
             this.lines = lines;
@@ -52,7 +51,7 @@ namespace OOP_Kurbala205TN_CW
         {
 
             InitializeComponent();
-            MessageBox.Show("У налаштуваннях введіть шлях до Файлу.");
+            MessageBox.Show("РЈ РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏС… РІРІРµРґС–С‚СЊ С€Р»СЏС… РґРѕ Р¤Р°Р№Р»Сѓ.");
             SettingForm settingForm = new SettingForm(this);
             settingForm.Show();
             settingForm.SetDesktopLocation(1000,600);
@@ -67,7 +66,10 @@ namespace OOP_Kurbala205TN_CW
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не вдалося зчитати текст. Налаштуйте шлях до файлу.");
+                MessageBox.Show("РќРµ РІРґР°Р»РѕСЃСЏ Р·С‡РёС‚Р°С‚Рё С‚РµРєСЃС‚. \nРќР°Р»Р°С€С‚СѓР№С‚Рµ С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ.");
+                SettingForm settingForm = new SettingForm(this);
+                settingForm.Show();
+                settingForm.SetDesktopLocation(1000, 600);
                 return "";
             }
         }
@@ -176,17 +178,8 @@ namespace OOP_Kurbala205TN_CW
             }
 
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NextPage_Click(object sender, EventArgs e)
+      
+               private void NextPage_Click(object sender, EventArgs e)
         {   
             if (Pages[PageNumber + 1] == null)
             {
@@ -195,7 +188,7 @@ namespace OOP_Kurbala205TN_CW
             PageNumber++;
             TextBox.Text = string.Empty;
             TextBox.Text = Read(PageNumber);
-            Page.Text = "Сторінка " + (PageNumber + 1).ToString();
+            Page.Text = "РЎС‚РѕСЂС–РЅРєР° " + (PageNumber + 1).ToString();
 
 
         }
@@ -209,7 +202,7 @@ namespace OOP_Kurbala205TN_CW
             PageNumber--;
             TextBox.Text = string.Empty;
             TextBox.Text = Read(PageNumber);
-            Page.Text = "Сторінка " + (PageNumber + 1).ToString();
+            Page.Text = "РЎС‚РѕСЂС–РЅРєР° " + (PageNumber + 1).ToString();
 
         }
 
@@ -224,7 +217,7 @@ namespace OOP_Kurbala205TN_CW
             for (int i = 0; i < Pages.Length; i++)
             {
                 if (Pages[i] == null) { break; }
-                File.AppendAllText(savepath, "\nСторінка: " + (i + 1)+" - \n");
+                File.AppendAllText(savepath, "\n\nРЎС‚РѕСЂС–РЅРєР°: " + (i + 1)+" - \n");
                 File.AppendAllText(savepath, Pages[i]);
             }
         }
